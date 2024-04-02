@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+
+    <title>show</title>
+
+{% endblock %}
+{% block content %}
+            <table class="table table-dark table-hover">
+                    <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>River</th>
+                                <th>Length</th>
+                                <th>Area</th>
+                                <th>States</th>
+                                <th>River Mode</th>
+                                <th colspan="2" class="text-center">Action</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        {% for river in rivers %}
+                            <tr>
+                                <td>{{ river.river_id }}</td>
+                                <td>{{ river.river_name }}</td>
+                                <td>{{ river.river_length }}</td>
+                                <td>{{ river.river_area }}</td>
+                                <td>{{ river.flows_in_states }}</td>
+                                <td>{{ river.river_mode }}</td>
+                                <td>
+                                    <a href="{% url 'update_url' river.id %}">
+                                        <button class="btn btn-primary"><i class="bi bi-pencil-square"></i>&nbsp Update</button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'delete_url' river.id  %}">
+                                        <button class="btn btn-warning"><i class="bi bi-trash"></i>&nbsp Delete</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+
+{% endblock %}
